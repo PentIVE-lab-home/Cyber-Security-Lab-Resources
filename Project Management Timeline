@@ -1,4 +1,34 @@
-### Project Management
+# ![Markdown Here logo](https://raw.github.com/adam-p/markdown-here/master/src/common/images/icon48.png) Markdown Here
+
+[**Visit the website.**](http://markdown-here.com)<br>
+[**Get it for Chrome.**](https://chrome.google.com/webstore/detail/elifhakcjgalahccnjkneoccemfahfoa)<br>
+[**Get it for Firefox.**](https://addons.mozilla.org/en-US/firefox/addon/markdown-here/)<br>
+[**Get it for Safari.**](https://s3.amazonaws.com/markdown-here/markdown-here.safariextz)<br>
+[**Get it for Thunderbird and Postbox.**](https://addons.mozilla.org/en-US/thunderbird/addon/markdown-here/)<br>
+[**Get it for Opera.**](https://addons.opera.com/en/extensions/details/markdown-here/)<br>
+[**Discuss it and ask questions in the Google Group.**](https://groups.google.com/forum/?fromgroups#!forum/markdown-here/)<br>
+
+*Markdown Here* is a Google Chrome, Firefox, Safari, Opera, and Thunderbird extension that lets you write email<sup>&dagger;</sup> in Markdown<sup>&Dagger;</sup> and render them before sending. It also supports syntax highlighting (just specify the language in a fenced code block).
+
+Writing email with code in it is pretty tedious. Writing Markdown with code in it is easy. I found myself writing email in Markdown in the Github in-browser editor, then copying the preview into email. This is a pretty absurd workflow, so I decided create a tool to write and render Markdown right in the email.
+
+To discover what can be done with Markdown in *Markdown Here*, check out the [Markdown Here Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet) and the other [wiki pages](https://github.com/adam-p/markdown-here/wiki).
+
+<sup>&dagger;: And Google Groups posts, and Blogger posts, and Evernote notes, and Wordpress posts! [See more](#compatibility).</sup><br>
+<sup>&Dagger;: And TeX mathematical formulae!</sup>
+
+![screenshot of conversion](https://raw.github.com/adam-p/markdown-here/master/store-assets/markdown-here-image1.gimp.png)
+
+### Table of Contents
+**[Installation Instructions](#installation-instructions)**<br>
+**[Usage Instructions](#usage-instructions)**<br>
+**[Troubleshooting](#troubleshooting)**<br>
+**[Compatibility](#compatibility)**<br>
+**[Notes and Miscellaneous](#notes-and-miscellaneous)**<br>
+**[Building the Extension Bundles](#building-the-extension-bundles)**<br>
+**[Next Steps, Credits, Feedback, License](#next-steps)**<br>
+
+*Project Management
 
 **Initial Research: September 15**
 
@@ -28,3 +58,4 @@
 - Demonstrate environment capabilities.
 - Provide setup guides, usage instructions.
 - Incorporate initial feedback.
+
