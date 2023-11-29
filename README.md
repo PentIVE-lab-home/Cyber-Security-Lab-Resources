@@ -1,2 +1,2 @@
-# PENTIVE_caps
+### PENTIVE-Capstone
 Capstone Project
