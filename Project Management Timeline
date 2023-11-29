@@ -1,0 +1,30 @@
+### Project Management
+
+**Initial Research: September 15**
+
+- Explore existing penetration testing lab options.
+- Evaluate leading open-source ethical hacking tools.
+
+**Requirements Finalization: September 30**
+
+- Detail all required features and functionality.
+- Specify precise usage metrics and performance objectives.
+
+**Design and Architecture: October 15**
+
+- Create network topology diagrams.
+- Build Docker compose file modeling required services.
+- Design modular components for flexibility.
+
+**Development Sprints and Testing: October 20 - November 25**
+
+- Sprint 1: Core network + Kali Linux image.
+- Sprint 2: Vulnerable app containers.
+- Sprint 3: Automated rebuild scripts.
+- Sprint 4: Usage analytics stack.
+
+**Presentation #1 to Faculty Panel**
+
+- Demonstrate environment capabilities.
+- Provide setup guides, usage instructions.
+- Incorporate initial feedback.
