@@ -1,0 +1,70 @@
+## General Instructions
+
+### Services:
+
+#### WordPress
+- **Description**: WordPress provides a content management system commonly used for websites and blogs.
+- **Username**: `web`
+- **URL**: [http://localhost:8085](http://localhost:8085)
+- **Authentication**: 
+  - Username: `cardinal`
+  - Password: `cyber`
+
+#### GitLab
+- **Description**: GitLab offers git repository management, CI/CD, and DevOps tooling.
+- **Username**: `gitlab`
+- **URL**: [http://localhost:8089](http://localhost:8089)
+- **Root Password**: `cyber`
+
+#### Gitea
+- **Description**: Gitea provides an open-source git service similar to GitHub.
+- **Username**: `gitea`
+- **URL**: [http://localhost:3000](http://localhost:3000)
+- **Note**: Initial configuration required through the web UI.
+
+#### PhpMyAdmin
+- **Description**: PhpMyAdmin offers a web interface for MySQL database administration.
+- **Username**: `phpmyadmin`
+- **URL**: [http://localhost:8182](http://localhost:8182)
+- **MySQL Credentials**: 
+  - Username: `cardinal`
+  - Password: `cyber`
+
+#### Drupal
+- **Description**: Drupal provides a popular open source Content Management System (CMS) system.
+- **Username**: `drupal1`
+- **URL**: [http://localhost:8185](http://localhost:8185)
+- **Note**: Further configuration is needed through the web UI.
+
+### Operations:
+
+1. **Starting the services**:
+   - Ensure Docker is installed on your machine.
+   - Place the `docker-compose.yml` file in a directory on your host machine.
+   - Open a terminal and navigate to the directory containing the `docker-compose.yml` file.
+   - Run the following command to start all the services defined in the Docker Compose file:
+     ```shell
+     docker-compose up -d
+     ```
+
+2. **Accessing the services**:
+   - **Kali Linux**: Access the Kali Linux container by executing the following command:
+     ```shell
+     docker exec -it kali bash
+     ```
+   - **OWASP Juice Shop**: The Juice Shop web application should be available at [http://localhost](http://localhost) on the port mapped in the Docker Compose file (if not mapped, you will have to use the internal Docker network IP).
+   - **OWASP BWA**: Access the OWASP BWA application similarly to Juice Shop, using the port mapped in the Docker Compose file.
+
+3. **Stopping the services**:
+   - To stop all running services defined in the Docker Compose file, run:
+     ```shell
+     docker-compose down
+     ```
+
+4. **Network Configuration**:
+   - All services are on the `pentestnet` network and can interact with each other using the internal Docker network IPs as defined in the Docker Compose file.
+   - If you need to isolate or create separate networks for `hiddennet` and `redteamlab`, you can assign services to those networks accordingly in the Docker Compose file.
+
+5. **Windows Environments**:
+   - The Windows 10 and Windows 7 services are placeholders. For Docker-compatible Windows images, you can replace the placeholder image names with your actual image names.
+   - Here is a link to the Microsoft docker images: [Microsoft Container Base Images](https://learn.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/container-base-images).
