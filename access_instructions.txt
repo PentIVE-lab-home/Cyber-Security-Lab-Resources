@@ -1,0 +1,67 @@
+WordPress: WordPress provides a content management system commonly used for websites and blogs.
+• Username: web
+• Accessible at: http://localhost:8085
+• Authentication: Username - cardinal, Password - cyber
+
+GitLab: GitLab offers git repository management, CI/CD, and DevOps tooling.
+• Username: gitlab
+• Accessible at: http://localhost:8089
+• Root Password: cyber
+
+Gitea
+• Username: gitea
+• Accessible at: http://localhost:3000
+• Initial configuration required through the web UI.
+• Gitea provides an open-source git service similar to GitHub.
+
+PhpMyAdmin
+• Username: phpmyadmin
+• Accessible at: http://localhost:8182
+• MySQL Credentials: Username - cardinal, Password - cyber
+• PhpMyAdmin offers a web interface for MySQL database administration.
+
+Drupal
+• Username: drupal1
+• Accessible at: http://localhost:8185
+• Further configuration needed through the web UI.
+• Drupal provides a popular open source CMS system.
+
+
+
+
+
+1. Starting the services:
+   - Ensure Docker is installed on your machine.
+   - Place the `docker-compose.yml` file in a directory on your host machine.
+   - Open a terminal and navigate to the directory containing the `docker-compose.yml` file.
+   - Run the following command to start all the services defined in the Docker Compose file:
+     ```
+     docker-compose up -d
+     ```
+
+2. Accessing the services:
+   - Kali Linux: Access the Kali Linux container by executing the following command:
+     ```
+     docker exec -it kali bash
+     ```
+   - OWASP Juice Shop: The Juice Shop web application should be available at `http://localhost` on the port mapped in the Docker Compose file (if not mapped, you will have to use the internal Docker network IP).
+   - OWASP BWA: Access the OWASP BWA application similarly to Juice Shop, using the port mapped in the Docker Compose file.
+
+3. Stopping the services:
+   - To stop all running services defined in the Docker Compose file, run:
+     ```
+     docker-compose down
+     ```
+
+4. Network Configuration:
+   - All services are on the `pentestnet` network and can interact with each other using the internal Docker network IPs as defined in the Docker Compose file.
+   - If you need to isolate or create separate networks for `hiddennet` and `redteamlab`, you can assign services to those networks accordingly in the Docker Compose file.
+
+5. Windows Environments:
+   - The Windows 10 and Windows 7 services are placeholders. Docker-compatible Windows images, you can replace the placeholder image names with your actual image names.
+   - Accessing the Windows containers would depend on how the images are configured. Typically, you'd access them via Remote Desktop Protocol (RDP) if the containers have RDP enabled and ports are mapped accordingly.
+
+6. Other services:
+   - You may add additional services such as databases, web servers, or other tools as required by your penetration testing lab. Configure each service in the Docker Compose file with the appropriate image, environment variables, volumes, and network settings.
+
+Note: The `docker-compose.yml` file assumes the use of publicly available images for OWASP Juice Shop and BWA. Ensure you have the necessary permissions and licenses for any proprietary software included in your Docker Compose configuration, especially for Windows images. Always use these tools responsibly and ethically for penetration testing within your own lab environment.
