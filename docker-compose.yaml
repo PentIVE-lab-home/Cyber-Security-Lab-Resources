@@ -1,0 +1,176 @@
+version: "3"
+
+services:
+  # WordPress service
+  web:
+    image: vulhub/wordpress:4.6
+    depends_on:
+      - mysql
+    environment:
+      - WORDPRESS_DB_HOST=mysql:3306
+      - WORDPRESS_DB_USER=cardinal
+      - WORDPRESS_DB_PASSWORD=cyber
+      - WORDPRESS_DB_NAME=wordpress
+    ports:
+      - "8085:80"
+    networks:
+      hacked:
+        ipv4_address: 192.168.45.7
+
+  # MySQL service for WordPress
+  mysql:
+    image: mysql:5
+    environment:
+      - MYSQL_ROOT_PASSWORD=cyber
+    networks:
+      hacked:
+        ipv4_address: 192.168.45.8
+
+  # Kali Linux - Penetration Testing Platform
+  kali:
+    image: kalilinux/kali-rolling:latest
+    networks:
+      hacked:
+        ipv4_address: 192.168.45.10
+    tty: true
+
+  # Redis service
+  redis:
+    image: redis:5.0.9-alpine
+    networks:
+      hacked:
+        ipv4_address: 192.168.45.50
+
+  # PostgreSQL service for GitLab
+  postgresql:
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_USER=cardinal
+      - POSTGRES_PASSWORD=cyber
+      - POSTGRES_DB=gitlabhq_production
+    networks:
+      hacked:
+        ipv4_address: 192.168.45.51
+
+  # GitLab - DevOps Lifecycle Tool
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    depends_on:
+      - postgresql
+    ports:
+      - "8089:80"
+      - "10022:22"
+    environment:
+      - GITLAB_OMNIBUS_CONFIG=external_url 'http://192.168.45.52'
+      - DB_ADAPTER=postgresql
+      - DB_HOST=postgresql
+      - DB_PORT=5432
+      - DB_USER=cardinal
+      - DB_PASS=cyber
+      - DB_NAME=gitlabhq_production
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - GITLAB_ROOT_PASSWORD=cyber
+    networks:
+      hacked:
+        ipv4_address: 192.168.45.52
+
+  # CouchDB service
+  couchdb:
+    image: couchdb:3.1.1
+    ports:
+      - "5984:5984"
+    networks:
+      hacked:
+        ipv4_address: 192.168.45.53
+
+  # Discuz forum service
+  discuz:
+    image: vulhub/discuz:x3.4
+    depends_on:
+      - discuzdb
+    ports:
+      - "8180:80"
+    networks:
+      gremlin:
+        ipv4_address: 10.89.1.20
+
+  # MariaDB service for Discuz
+  discuzdb:
+    image: mariadb:10.5
+    environment:
+      - MYSQL_ROOT_PASSWORD=cyber
+      - MYSQL_DATABASE=ultrax
+    networks:
+      gremlin:
+        ipv4_address: 10.89.1.21
+
+  # Gitea - Git with a cup of tea
+  gitea:
+    image: gitea/gitea:1.14.3
+    ports:
+      - "3000:3000"
+      - "20022:22"
+    networks:
+      hacked:
+        ipv4_address: 192.168.45.56
+
+  # Solr service
+  solr:
+    image: solr:8.11.0
+    ports:
+      - "8983:8983"
+    networks:
+      hacked:
+        ipv4_address: 192.168.45.57
+
+  # PhpMyAdmin - Database Management
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.1.1
+    environment:
+      - PMA_HOST=mysql41
+      - PMA_USER=cardinal
+      - PMA_PASSWORD=cyber
+    ports:
+      - "8182:80"
+    networks:
+      nextone:
+        ipv4_address: 192.168.21.21
+
+  # MySQL service for PhpMyAdmin
+  mysql41:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=cyber
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=cardinal
+      - MYSQL_PASSWORD=cyber
+    networks:
+      nextone:
+        ipv4_address: 192.168.21.20
+
+  # Drupal service
+  drupal1:
+    image: drupal:9.1.13
+    ports:
+      - "8185:80"
+    networks:
+      nextone:
+        ipv4_address: 192.168.21.22
+
+networks:
+  hacked:
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.45.0/24"
+  gremlin:
+    ipam:
+      driver: default
+      config:
+        - subnet: "10.89.1.0/24"
+  nextone:
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.21.0/24"
